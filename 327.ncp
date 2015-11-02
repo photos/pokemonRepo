@@ -1,0 +1,85 @@
+<Project>
+  <Name>Pokemon</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Pokemon</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Pokemon</Name>
+        <Access>Public</Access>
+        <Location left="95" top="20" />
+        <Size width="218" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String nickname</Member>
+        <Member type="Field">private String kindOfPokemon</Member>
+        <Member type="Field">private int health</Member>
+        <Member type="Field">private int attack</Member>
+        <Member type="Field">private int defense</Member>
+        <Member type="Field">private int speed</Member>
+        <Member type="Field">private boolean isEvolved</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>EvolvedPokemon</Name>
+        <Access>Public</Access>
+        <Location left="95" top="300" />
+        <Size width="218" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String abilityName</Member>
+        <Member type="Method">public void increaseHealth()</Member>
+        <Member type="Method">public void increaseAttack()</Member>
+        <Member type="Method">public void increaseDefense()</Member>
+        <Member type="Method">public void increaseSpeed()</Member>
+        <Member type="Method">private void abilityEffect(String abilityName)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>FightSimulator</Name>
+        <Access>Public</Access>
+        <Location left="451" top="161" />
+        <Size width="259" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public Pokemon battle(Pokemon p1, Pokemon p2)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="0" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>411</X>
+          <Y>211</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>426</X>
+          <Y>211</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>0..2</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>399</X>
+          <Y>333</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>405</X>
+          <Y>333</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>0..2</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
