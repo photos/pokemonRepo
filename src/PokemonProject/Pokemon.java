@@ -18,13 +18,13 @@ import java.util.Date;
 //----------------
 public class Pokemon {
 	
-	private String nickname;
-	private String kindOfPokemon;
-	private int health;
-	private int attack;
-	private int defense;
-	private int speed;
-	private boolean isEvolved;
+	protected String nickname;
+	protected String kindOfPokemon;
+	protected int health;
+	protected int attack;
+	protected int defense;
+	protected int speed;
+	protected boolean isEvolved;
 	
 	//-------------------------
 	// Mark: - Main Constructor
