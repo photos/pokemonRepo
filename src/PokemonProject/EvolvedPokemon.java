@@ -18,17 +18,21 @@ public class EvolvedPokemon extends Pokemon {
 		super(nickname, kindOfPokemon, health, attack, defense, speed, isEvolved);
 		isEvolved = true;
 		
+		// increase every attribute by a random amount
 		increaseAttribute(health);
 		increaseAttribute(attack);
 		increaseAttribute(defense);
 		increaseAttribute(speed);
 		
+		// increase a random attribute again by a random amount
 		abilityEffect();
 	}
 
 	// Increases the given attribute by a random factor between 1.0 and 1.5
 	private void increaseAttribute(int attribute) {
 		Random rand = new Random();
+		
+		// multiply attribute by random number between 1 and 1.5
 		attribute *= ((rand.nextDouble() / 2) + 1);
 	}
 	
