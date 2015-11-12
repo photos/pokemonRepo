@@ -270,7 +270,7 @@ public class CreatePokemonGui {
 					} else {
 						
 						// Get a connection to the MySQL database
-						myConnection = DriverManager.getConnection("jdbc:mysql://localhost/PokemonSchema", "student", "student");
+						myConnection = DriverManager.getConnection("jdbc:mysql://localhost/pokemonschema", "student", "student");
 						System.out.println("Database connection successful!");
 						
 						// Create a statement to "insert" a new Pokemon object in the database
@@ -285,9 +285,9 @@ public class CreatePokemonGui {
 						myStatement.setInt(6, speed);
 							
 						// If there is new data in the database, let the user know their data was saved
-						int data = myStatement.executeUpdate();
+						int saveDataOutput = myStatement.executeUpdate();
 								
-						if (data > 0){
+						if (saveDataOutput > 0){
 							JOptionPane.showMessageDialog(null, "Data is saved.");
 						} else {
 							JOptionPane.showMessageDialog(null, "Data is not saved.");
