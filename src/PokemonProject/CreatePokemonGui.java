@@ -285,9 +285,9 @@ public class CreatePokemonGui {
 						myStatement.setInt(6, speed);
 							
 						// If there is new data in the database, let the user know their data was saved
-						int saveDataOutput = myStatement.executeUpdate();
+						int data = myStatement.executeUpdate();
 								
-						if (saveDataOutput > 0){
+						if (data > 0){
 							JOptionPane.showMessageDialog(null, "Data is saved.");
 						} else {
 							JOptionPane.showMessageDialog(null, "Data is not saved.");
