@@ -1,12 +1,14 @@
-//********************************************************************
-// Forrest Collins, Manuel Puentes, David Larsen
 
-// Nov 14, 2015					EGR 327
-// Time spent: 17 hour
-// Purpose: This class displays the Pokemon a user creates in a table,
-//          which the user can interact with to evolve or delete a
-//          Pokemon. Also, in future iterations, the user will be able
-//          to battle two Pokemon.
+//********************************************************************
+// EGR327 Project		CBU
+// MyPokemon.java		java class file for PokemonProject
+// Created 11-14-15		Forrest Collins
+// This class displays the Pokemon a user creates in a table, which
+// the user can interact with to evolve or delete a Pokemon object.
+// REVISION HISTORY:
+// Date			By			Details
+// 11-14-15		Forrest		Created MyPokemon.java, created GUI, table logic,
+//							SQL logic for evolve, delete, refresh buttons
 //********************************************************************
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -25,6 +27,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.*;
+import java.util.Random;
 
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
@@ -72,10 +75,9 @@ public class MyPokemon extends JPanel {
 		table.setRowHeight(30);
 		
 		// When this screen appears, update the My Pokemon table
-		addAncestorListener ( new AncestorListener ()
+		addAncestorListener (new AncestorListener ()
 	    {
 	        public void ancestorAdded ( AncestorEvent event ){
-	        	
 	        	// Update the table
 	        	// Call the reload table method
 	        	reloadTable();
@@ -83,13 +85,11 @@ public class MyPokemon extends JPanel {
 
 			@Override
 			public void ancestorRemoved(AncestorEvent event) {
-		
 				// empty
 			}
 
 			@Override
 			public void ancestorMoved(AncestorEvent event) {
-				
 				// Update the table
 	        	// Call the reload table method
 				reloadTable();
@@ -153,9 +153,12 @@ public class MyPokemon extends JPanel {
 							// test to update a selected Pokemon's attack value and ability
 							// increaseAttributeVal allows us to use the increaseAttribute method
 							// from the EvolvedPokemon Class with a Pokemon's database values.
-							double increaseAttributeVal = evolvedPokemon.increaseAttribute();
+							//double increaseAttributeVal = evolvedPokemon.increaseAttribute();
 							// default ability for now when you evolve a Pokemon
-							String ability = "Intimidate";
+							String ability[] = {"Intimidate", "Blaze", "Hustle", "Sturdy","Insomnia", "Levitate",
+												"Oblivious", "Prankster", "Reckless", "Technician"};
+							int randomIndex = new Random().nextInt(ability.length);
+							String randomAbility = (ability[randomIndex]);
 							
 							//1. Get a connection to database
 							myConnection = DriverManager.getConnection("jdbc:mysql://localhost", "student","student");
@@ -165,12 +168,12 @@ public class MyPokemon extends JPanel {
 							// 3. Execute a statement query
 							// Update all the Pokemon's stats
 							myStatement.executeUpdate("UPDATE PokemonSchema.Pokemon " +
-								  "SET attack =  attack * " + increaseAttributeVal + 
-								  " ,health = health * " + increaseAttributeVal +
-								  " ,defense = defense * " + increaseAttributeVal +
-								  " ,speed = speed * " + increaseAttributeVal +
+								  "SET attack =  attack * " + evolvedPokemon.increaseAttribute() + 
+								  " ,health = health * " + evolvedPokemon.increaseAttribute() +
+								  " ,defense = defense * " + evolvedPokemon.increaseAttribute() +
+								  " ,speed = speed * " + evolvedPokemon.increaseAttribute() +
 								  " ,isEvolved = 'yes' " + 
-								  " ,ability = '" + ability + "' " +
+								  " ,ability = '" + randomAbility + "' " +
 								  "WHERE nickname = '" + pokemonToEvolve + "'");
 							
 							// 4. Process a result set
@@ -181,7 +184,7 @@ public class MyPokemon extends JPanel {
 							
 							statusLabel.setText("Congratulations, you evolved " + pokemonToEvolve + "!");
 							
-						} catch(Exception exc){
+						} catch(Exception exc) {
 						
 							exc.printStackTrace();
 						
@@ -192,7 +195,6 @@ public class MyPokemon extends JPanel {
 								try {
 									myResultSet.close();
 								} catch (SQLException e1) {
-									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
 							}
@@ -200,7 +202,6 @@ public class MyPokemon extends JPanel {
 								try {
 									myStatement.close();
 								} catch (SQLException e1) {
-									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
 							}
@@ -208,7 +209,6 @@ public class MyPokemon extends JPanel {
 								try {
 									myConnection.close();
 								} catch (SQLException e1) {
-									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
 							}
@@ -290,7 +290,7 @@ public class MyPokemon extends JPanel {
 							
 							statusLabel.setText("Successfully deleted " + pokemonToDelete);
 							
-						} catch(Exception exc){
+						} catch(Exception exc) {
 						
 							exc.printStackTrace();
 						
@@ -301,7 +301,6 @@ public class MyPokemon extends JPanel {
 								try {
 									myResultSet.close();
 								} catch (SQLException e1) {
-									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
 							}
@@ -309,7 +308,6 @@ public class MyPokemon extends JPanel {
 								try {
 									myStatement.close();
 								} catch (SQLException e1) {
-									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
 							}
@@ -317,14 +315,13 @@ public class MyPokemon extends JPanel {
 								try {
 									myConnection.close();
 								} catch (SQLException e1) {
-									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
 							}
 						}
  
 				// if the user did not select a Pokemon, display a message
-				} catch (ArrayIndexOutOfBoundsException ex){
+				} catch (ArrayIndexOutOfBoundsException ex) {
 					
 					statusLabel.setText("Please choose a Pokemon to delete.");
 				}
@@ -351,8 +348,8 @@ public class MyPokemon extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				// Not yet implemented!
-				statusLabel.setText("Battle Pokemon feature coming soon!");
+				PokemonGUI pokemonGui = (PokemonGUI) getParent().getParent().getParent().getParent();
+				pokemonGui.changeCards("3");
 			}
 		});
 		battlePokemonButton.setFont(new Font("Avenir Next", Font.PLAIN, 23));
@@ -396,7 +393,6 @@ public class MyPokemon extends JPanel {
 				try {
 					myResultSet.close();
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -404,7 +400,6 @@ public class MyPokemon extends JPanel {
 				try {
 					myStatement.close();
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -412,7 +407,6 @@ public class MyPokemon extends JPanel {
 				try {
 					myConnection.close();
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

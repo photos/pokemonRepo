@@ -1,11 +1,15 @@
-//********************************************************************
-// Forrest Collins, Manuel Puentes, David Larsen
 
-// Oct 20, 2015					EGR 327
-// Time spent: 4 hrs
-// Purpose: In CreatePokemonGui.java, a user creates 
-//          a "pokemon" object from a GUI, which is 
-//          then stored in a local MySQL database.
+//********************************************************************
+// EGR327 Project		CBU
+// CreatePokemon.java	java class file for PokemonProject
+// Created 10-20-15		Forrest Collins
+// In this class, a user creates a Pokemon object from a GUI, which is
+// then stored in a local MySQL database.
+// REVISION HISTORY:
+// Date			By			Details
+// 10-20-15		Forrest		Created CreatePokemon.java, created GUI, created
+//							scaled .gif images, textfield value logic, 
+//							and SQL logic for creating a Pokemon
 //********************************************************************
 
 import java.sql.*;
@@ -57,9 +61,9 @@ public class CreatePokemon extends JPanel{
 												 "Diglett", "Meowth", "Psyduck", "Mankey",
 												 "Growlithe", "Poliwag", "Abra", "Machop",
 												 "Ponyta", "Seel", "Grimer", "Shellder",
-												 "Drowzee", "Krabby", "Magnemite", "Cubone",
-												 "Tyrogue", "Lickitung", "Koffing", "Chansey",
-												 "Tangela", "Kangaskhan", "Horsea", "Goldeen",
+												 "Drowzee", "Krabby", "Creedmon", "Koltadactyl", 
+												 "Magnemite", "Cubone", "Tyrogue", "Lickitung", "Koffing", 
+												 "Chansey", "Tangela", "Kangaskhan", "Horsea", "Goldeen",
 												 "Staryu", "Electabuzz", "Magmar", "Ledyba",
 												 "Tauros", "Magikarp", "Ditto", "Eevee",
 												 "Vaporeon", "Jolteon", "Flareon", "Porygon",
@@ -70,9 +74,8 @@ public class CreatePokemon extends JPanel{
 		setBounds(100, 100, 800, 495);
 		setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		setBackground(Color.WHITE);
-		
 		setLayout(null);
-		// Background frame hex color
+		// Background frame hex color blue
 		setBackground(Color.decode("#039BE5"));
 		
 		//---------------
@@ -179,6 +182,8 @@ public class CreatePokemon extends JPanel{
 		//-------------------------------------------------
 		kindOfPokemonComboBox.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
+		    	
+		    	// if a Pokemon is selected, display the .gif image of it
 		    	if (kindOfPokemonComboBox.getSelectedItem() != null) {
 		            String imagePokemon = kindOfPokemonComboBox.getSelectedItem().toString();
 		            ImageIcon imageIcon = new ImageIcon("Images/" + imagePokemon + ".gif");
@@ -313,7 +318,6 @@ public class CreatePokemon extends JPanel{
 				}
 			}
 		});
-		
 		btnCreate.setFont(new Font("Avenir Next", Font.PLAIN, 23));
 		btnCreate.setBounds(115, 381, 184, 50);
 		add(btnCreate);
@@ -326,6 +330,7 @@ public class CreatePokemon extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
+				// go to "My Pokemon" screen
 				PokemonGUI pokemonGui = (PokemonGUI) getParent().getParent().getParent().getParent();
 				pokemonGui.changeCards("2");
 			}
@@ -334,7 +339,6 @@ public class CreatePokemon extends JPanel{
 		myPokemonButton.setFont(new Font("Avenir Next", Font.PLAIN, 23));
 		myPokemonButton.setBounds(444, 381, 200, 50);
 		add(myPokemonButton);
-	
 	}
 }
 

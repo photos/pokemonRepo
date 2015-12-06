@@ -1,10 +1,13 @@
-//********************************************************************
-// Forrest Collins, Manuel Puentes, David Larsen
 
-// Nov 2, 2015					EGR 327
-// Time spent: 1 hour
-// Purpose: This class extends the Pokemon class to evolve an existing
-// 			Pokemon object and change all of its attributes accordingly
+//********************************************************************
+// EGR327 Project		CBU
+// EvolvedPokemon.java	java class file for PokemonProject
+// Created 11-2-15		David Larsen
+// This class extends the Pokemon class to evolve an existing
+// Pokemon object and change all of its attributes accordingly
+// REVISION HISTORY:
+// Date			By			Details
+// 11-2-15		David		Created EvolvedPokemon.java and method logic
 //********************************************************************
 
 import java.sql.Connection;
@@ -21,13 +24,6 @@ public class EvolvedPokemon extends Pokemon {
 //			int attack, int defense, int speed, boolean isEvolved) throws SQLException {
 	public EvolvedPokemon(Pokemon p1) {
 		super(nickname, kindOfPokemon, health, attack, defense, speed, isEvolved);
-//		nickname = p1.nickname;
-//		kindOfPokemon = p1.kindOfPokemon;
-//		health= p1.health;
-//		attack = p1.attack;
-//		defense = p1.defense;
-//		speed = p1.speed;
-//		isEvolved = true;
 		
 		// increase every attribute by a random amount
 		increaseAttribute();
@@ -51,21 +47,6 @@ public class EvolvedPokemon extends Pokemon {
 	private void abilityEffect() {
 		Random rand = new Random();
 		int attributeSelector = rand.nextInt(4);
-		
-//		switch (attributeSelector) {
-//			case 0: increaseAttribute(health);
-//				break;
-//			case 1: increaseAttribute(attack);
-//				break;
-//			case 2: increaseAttribute(defense);
-//				break;
-//			case 3: increaseAttribute(speed);
-//				break;
-//			default:
-//				break;
-//		}
+	
 	}
-	
-	
-	
 }
