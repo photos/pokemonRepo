@@ -1,12 +1,14 @@
-//********************************************************************
-// Forrest Collins, Manuel Puentes, David Larsen
 
-// Nov 14, 2015					EGR 327
-// Time spent: 17 hours
-// Purpose: This class displays the Pokemon a user creates in a table,
-//          which the user can interact with to evolve or delete a
-//          Pokemon. Also, in future iterations, the user will be able
-//          to battle two Pokemon.
+//********************************************************************
+// EGR327 Project		CBU
+// MyPokemon.java		java class file for PokemonProject
+// Created 11-14-15		Forrest Collins
+// This class displays the Pokemon a user creates in a table, which
+// the user can interact with to evolve or delete a Pokemon object.
+// REVISION HISTORY:
+// Date			By			Details
+// 11-14-15		Forrest		Created MyPokemon.java, created GUI, table logic,
+//							SQL logic for evolve, delete, refresh buttons
 //********************************************************************
 import java.awt.EventQueue;
 import java.awt.Font;

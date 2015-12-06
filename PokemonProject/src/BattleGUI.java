@@ -1,11 +1,16 @@
 //********************************************************************
-// Forrest Collins, Manuel Puentes, David Larsen
-
-// Dec 1, 2015					EGR 327
-// Time spent: 8 hrs
-// Purpose: BattleGui.java, a user battles two
-//          Pokemon objects, in which a winner 
-//          is displayed.
+// EGR327 Project		CBU
+// BattleGUI.java		java class file for PokemonProject
+// Created 12-1-15		David Larsen
+// In this class, a user battles 2 Pokemon, in which
+// a winner is displayed in a pop up
+// REVISION HISTORY:
+// Date			By			Details
+// 12-1-15		David		Created BattleGUI.java, created GUI, calculate
+//							value method logic
+// 12-1-15		Forrest		Added selected Pokemon logic, battle button
+//							logic, SQL logic
+// 12-1-15		Manuel		Fixed SQL bug in the battle button logic
 //********************************************************************
 
 import java.awt.Color;
@@ -171,7 +176,6 @@ public class BattleGUI extends JPanel {
 				
 				// change the first Pokemon selection label to the Pokemon you selected
 				// check so a Pokemon can't battle itself
-				
 				selectionLabel1.setText((String) table.getValueAt(row, 0));
 				if (selectionLabel1.getText() != "Select a Pokemon above") {
 					pokemonOneIsGood = true;
@@ -319,15 +323,19 @@ public class BattleGUI extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
+				// if both Pokemon selection labels are the same, display error
 				if (selectionLabel1.getText() == selectionLabel2.getText()){
 					
 					// Battle is Disabled!
 					battleStatusLabel.setText("Can't battle the same Pokemon!");
+					
 				} else {
 					
 					// Battle is Enabled!
 					battleStatusLabel.setText("Let's get ready to rumble!");
 					
+					// two preparedStatements are two ResultSets are needed
+					// because two Pokemon objects will be queried
 					Connection myConnection = null;
 					PreparedStatement myStatement1 = null;
 					ResultSet myResultSet1 = null;
@@ -335,8 +343,6 @@ public class BattleGUI extends JPanel {
 					ResultSet myResultSet2 = null;
 					
 					int row = table.getSelectedRow();
-//					String pokemonOneToBattle = "";
-//					String pokemonTwoToBattle = "";
 					
 					try {
 						
@@ -363,7 +369,7 @@ public class BattleGUI extends JPanel {
 									pokemonOneDefense =  myResultSet1.getInt("defense");
 									pokemonOneSpeed =  myResultSet1.getInt("speed");
 									pokemonOneKind =  myResultSet1.getString("kindOfPokemon");
-									System.out.println(pokemonOneKind =  myResultSet1.getString("kindOfPokemon"));
+									//System.out.println(pokemonOneKind =  myResultSet1.getString("kindOfPokemon"));
 									
 								}
 								
@@ -381,7 +387,7 @@ public class BattleGUI extends JPanel {
 									pokemonTwoDefense =  myResultSet2.getInt("defense");
 									pokemonTwoSpeed =  myResultSet2.getInt("speed");
 									pokemonTwoKind =  myResultSet2.getString("kindOfPokemon");
-									System.out.println(pokemonTwoKind =  myResultSet2.getString("kindOfPokemon"));
+									//System.out.println(pokemonTwoKind =  myResultSet2.getString("kindOfPokemon"));
 								}
 								
 								// Pop up Battle Winner

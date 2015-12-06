@@ -1,10 +1,15 @@
-//********************************************************************
-// Forrest Collins, Manuel Puentes, David Larsen
 
-// Dec 1, 2015					EGR 327
-// Time spent: 1 hr
-// Purpose: Pop up window to display the winner
-//          of a Pokemon battle.
+//********************************************************************
+// EGR327 Project		CBU
+// battleWinner.java	java class file for PokemonProject
+// Created 12-1-15		David Larsen
+// Pop up window displays the winner of a Pokemon battle
+// REVISION HISTORY:
+// Date			By			Details
+// 12-1-15		David		Created battleWinner.java, created GUI, created
+//							constructor logic
+// 12-1-15		Forrest		Added Pokemon image label logic 
+// 12-1-15		Manuel		Helped with UI color design for pop up
 //********************************************************************
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -22,7 +27,7 @@ public class battleWinner extends JPanel {
 	 * Create the panel.
 	 */
 	public battleWinner(String pokemonWinner, String pokemonWinnerKind) {
-		setBackground(Color.decode("#039BE5"));
+		setBackground(Color.decode("#039BE5")); // blue hex color
 		setLayout(null);
 		
 		// Displays the nickname of the Pokemon who won the battle

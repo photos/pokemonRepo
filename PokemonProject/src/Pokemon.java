@@ -1,14 +1,15 @@
-//********************************************************************
-// Forrest Collins, Manuel Puentes, David Larsen
 
-// Oct 20, 2015					EGR 327
-// Time spent: 1 hr
-// Purpose: A pokemon object from a MySQL
-//			database will be returned and its key values will
-//			be used to construct a Pokemon object, which will
-//			be accessed when evolving that Pokemon, which
-//			will inherit the Pokemon class's member variables.
-//			
+//********************************************************************
+// EGR327 Project		CBU
+// Pokemon.java			java class file for PokemonProject
+// Created 10-20-15		David Larsen & Manuel Puentes
+// In this class a Pokemon object will be returned an its values will be
+// used to construct a Pokemon object, which will be accessed when
+// evolving that Pokemon, which will inherit the Pokemon class'
+// member variables.
+// REVISION HISTORY:
+// Date			By				Details
+// 10-20-15		David & Manuel	Created Pokemon.java and the constructor
 //********************************************************************
 import java.util.Date;
 

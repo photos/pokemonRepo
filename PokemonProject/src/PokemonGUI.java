@@ -1,9 +1,13 @@
-//********************************************************************
-// Forrest Collins, Manuel Puentes, David Larsen
 
-// Nov 2, 2015					EGR 327
-// Time spent: 1 hour
-// Purpose: This class contains the logic for the cardLayout GUI
+//********************************************************************
+// EGR327 Project		CBU
+// PokemonGUI.java		java class file for PokemonProject
+// Created 11-2-15		Forrest
+// This class contains the logic for the cardLayout GUI
+// REVISION HISTORY:
+// Date			By			Details
+// 11-2-15		Forrest		Created PokemonGUI.java and cardLayout logic
+// 12-1-15		Manuel		Eliminated unnecessary cardLayout contentPanes
 //********************************************************************
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -63,18 +67,17 @@ public class PokemonGUI extends JFrame {
 	// MARK: - Logic to Change Screens
 	//--------------------------------
 	public void changeCards(String changeJFrame) {
-		if(changeJFrame == "1"){
+		if("1" == changeJFrame){
 			CardLayout cl = (CardLayout)(contentPane.getLayout());
 			cl.show(contentPane, "1");
 		}
-		if(changeJFrame == "2"){
+		if("2" == changeJFrame){
 			CardLayout cl = (CardLayout)(contentPane.getLayout());
 			cl.show(contentPane, "2");
 		}
-		if(changeJFrame == "3"){
+		if("3" == changeJFrame){
 			CardLayout cl = (CardLayout)(contentPane.getLayout());
 			cl.show(contentPane, "3");
 		}
-		
 	}
 }
